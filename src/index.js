@@ -7,6 +7,7 @@ const { clientReadyHandler } = require('./events/clientReady');
 const { interactionCreateHandler } = require('./events/interactionCreate');
 
 const pingCommand = require('./commands/ping');
+const forcastCommand = require('./commands/forecast');
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
@@ -15,6 +16,7 @@ const client = new Client({
 client.commands = new Collection();
 
 client.commands.set(pingCommand.data.name, pingCommand);
+client.commands.set(forcastCommand.data.name, forcastCommand);
 client.once(Events.ClientReady, () => clientReadyHandler(client));
 client.on(Events.InteractionCreate, interactionCreateHandler);
 

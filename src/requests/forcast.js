@@ -17,8 +17,8 @@ const fetchForcast = async (location) => {
       const city = response.data.location.name;
       const { country } = response.data.location;
       const locationName = ` ${city} , ${country}`;
-
-      const weatherDate = response.forecast.forecastday.map((forecastday) => {
+    
+      const weatherDate = response.data.forecast.forecastday.map((forecastday) => {
         return {
           date: forecastday.date,
 
