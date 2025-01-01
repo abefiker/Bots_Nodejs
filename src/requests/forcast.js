@@ -35,6 +35,7 @@ const fetchForcast = async (location) => {
     })
     .catch((err) => {
       console.error(err);
+      throw new Error(`Error fetching forecast for : ${err.message}`);
     });
 };
 

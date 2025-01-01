@@ -1,10 +1,8 @@
-const { REST, Routes, version } = require('discord.js');
-const { fetchForcast } = require('../requests/forcast');
+const { REST, Routes } = require('discord.js');
 
 const rest = new REST({ version: '10' }).setToken(process.env.BOT_RESET_TOKEN);
 const clientReadyHandler = async (client) => {
   console.log(`Logged in as ${client.user.tag}!`);
-  console.log(await fetchForcast('Addis Ababa'))
   try {
     console.log(`Started Refreshing  ${client.commands.size} commands!`);
     const data = await rest.put(
