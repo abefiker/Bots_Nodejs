@@ -1,6 +1,6 @@
 // src/events/interactionCreate.js
 const interactionCreateHandler = async (interaction) => {
-  if (!interaction.isCommand()) return; // Ensure it's a slash command interaction
+  if (!interaction.isCommand()) {return}; // Ensure it's a slash command interaction
 
   const command = interaction.client.commands.get(interaction.commandName);
 
