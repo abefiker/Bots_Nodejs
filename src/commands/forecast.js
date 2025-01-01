@@ -57,10 +57,9 @@ const execute = async (interaction) => {
     }
     await interaction.editReply({ embeds: [embed] });
   } catch (err) {
-    await interaction.editReply({ content: `Error fetching forecast: ${error.message}` });
+    await interaction.editReply({ content: `Error fetching forecast: ${err.message}` });
   }
 
-  // Here you can integrate the weather fetching logic using the `location` and `units`
 };
 
 module.exports = {

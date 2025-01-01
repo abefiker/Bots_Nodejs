@@ -17,17 +17,24 @@ const fetchForcast = async (location) => {
       const city = response.data.location.name;
       const { country } = response.data.location;
       const locationName = ` ${city} , ${country}`;
-    
-      const weatherDate = response.data.forecast.forecastday.map((forecastday) => {
-        return {
-          date: forecastday.date,
+      
+      const weatherDate = response.data.forecast.forecastday.map(
+        (forecastday) => {
+          return {
+            date: forecastday.date,
 
-          temperatureMinC: forecastday.day.mintemp_c,
-          temperatureMinF: forecastday.day.mintemp_f,
-          temperatureMaxC: forecastday.day.maxtemp_c,
-          temperatureMaxF: forecastday.day.maxtemp_f,
-        };
-      });
+            sunriseTime: forecastday.astro.sunrise,
+            sunsetTime: forecastday.astro.sunset,
+            moonriseTime: forecastday.astro.moonrise,
+            moonsetTime: forecastday.astro.moonset,
+
+            temperatureMinC: forecastday.day.mintemp_c,
+            temperatureMinF: forecastday.day.mintemp_f,
+            temperatureMaxC: forecastday.day.maxtemp_c,
+            temperatureMaxF: forecastday.day.maxtemp_f,
+          };
+        }
+      );
       return {
         locationName,
         weatherDate,
